@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>PdfViewer</title>
-</head>
+  <head>
+    <title>PDF Viewer</title>
+    <%= stylesheet_link_tag 'default', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'default', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <%= render 'layouts/shiv' %>
+  </head>
 <body>
-
-<%= yield %>
-
-<%= debug(params) if Rails.env.development? %>
-
+    <%= render 'layouts/header' %>
+    <div class="container">
+      <%= yield %>
+      <%= render 'layouts/footer' %>
+    </div>
 </body>
 </html>

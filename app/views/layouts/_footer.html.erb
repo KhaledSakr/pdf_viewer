@@ -1,0 +1,16 @@
+<footer class="footer navbar navbar-inner navbar-fixed-bottom">
+  <div class="container footer-container">
+    <nav>
+      <ul>
+        <li><%= link_to "Slides", slides_path %></li>
+        <li><%= link_to "Upload", upload_path %></li>
+        <% if logged_in? %>
+          <li><%= link_to "Profile", current_user  %></li>
+          <li><%= link_to "Logout", logout_path %></li>
+        <% else %>
+          <li><%= link_to "Log in", login_path %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+</footer>
