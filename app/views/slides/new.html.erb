@@ -1,2 +1,7 @@
 <h1>Slides#new</h1>
 <p>Find me in app/views/slides/new.html.erb</p>
+
+<%= records = Dir.glob("**/*.pdf") %>
+
+
+<%=	records.sample.gsub("public", '') %>

@@ -1,7 +1,16 @@
-<h1>Upload#new</h1>
-<p>Find me in app/views/upload/new.html.erb</p>
-
+<div class= "uploadhead">
+	<h1>Upload PDF</h1>
+	<p>Please select the pdf you want to view</p>
+</div>
+<div class="uploadbody">
 <%= form_for(@upload, multipart: true, url: upload_path) do |form| %>
-  <%= form.file_field :document %>
-  <%= form.submit "Upload" %>
-<% end %>
+	<div class="choosefile">
+		
+		  <%= form.file_field :document %>
+	  </div>
+	  <div class="uploadbtn">
+		  <%= form.submit "Upload" %>
+	  </div>
+	<% end %>
+</div>
+<%= @upload.document.url(:class) %>
