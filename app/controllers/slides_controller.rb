@@ -1,5 +1,4 @@
 class SlidesController < ApplicationController
-  def getPDFs
-  	 
+  def new
   end
 end
