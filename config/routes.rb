@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'upload/show'
+
   root 'slides#new'
   get     'login'   => 'sessions#new'
   post    'login'   => 'sessions#create'
