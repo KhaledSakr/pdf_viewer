@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+ 
   get 'upload/show'
 
   root 'slides#new'
@@ -9,8 +10,11 @@ Rails.application.routes.draw do
   get     'slides'  => 'slides#new'
   get     'upload'  => 'upload#new'
   post    'upload'  => 'upload#create'
+  get 'upload/show'
+  post    'upload/show'  
   resources :users
-  
+  resources :upload
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
