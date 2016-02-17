@@ -1,23 +1,23 @@
 class UploadController < ApplicationController
-	def show
-		@upload = Upload.find(params[:document_file_name])
-	end	
-	
+
+  def show
+    @upload = Upload.find_by_id(:id)
+  end
+
   def new
     @upload = Upload.new
   end
 
-	def create
-	  @upload = Upload.new(upload_params)
-	  if @upload.save
-      flash[:success] = "File Successfuly Uploaded"
-      redirect_to root_path
+  def create
+    @upload = Upload.new(upload_params)
+    if @upload.save
+      log_in @upload
+      flash[:success] = "You have successfuly uploaded a file!"
+      redirect_to upload_path
     else
-      flash[:alert] = "Error saving file"
-    	render 'new'
-		end
-	end
-
+      render 'new'
+    end
+  end
 	
 private
 
