@@ -1,8 +1,7 @@
 <h1>Slides</h1>
-
-<% @uploads.each do |up| %>
-<%= link_to up.document_file_name, slide_path(up) %>
- <%= link_to '----Delete', slide_path(up), method: :delete, data: { confirm: 'Are you sure you want to delete the file?' } %><br>
+	<% @uploads.each do |up| %>
+	<%= link_to up.document_file_name, slide_path(up) %>
+	<%= link_to '----Delete', slide_path(up), method: :delete, data: { confirm: 'Are you sure you want to delete the file?' } %><br>
 <% end %>
 
 

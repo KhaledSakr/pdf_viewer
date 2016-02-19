@@ -1,8 +1,8 @@
 class CommentsController < ApplicationController
-		def create
+	
+	def create
 		@upload = Upload.find(params[:upload_id])
 		@comment = @upload.comments.create(params[:comment].permit(:name, :body))
-
 		redirect_to slide_path(@upload)
 	end
 
@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
 		@upload = Upload.find(params[:upload_id])
 		@comment = @upload.comments.find(params[:id])
 		@comment.destroy
-
 		redirect_to slide_path(@upload)
 	end
+
 end
