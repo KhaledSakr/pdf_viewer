@@ -14,18 +14,18 @@
 ActiveRecord::Schema.define(version: 20160219184201) do
 
   create_table "comments", force: :cascade do |t|
-    t.string   "name",        limit: 255
-    t.text     "body",        limit: 65535
-    t.integer  "upload_id",   limit: 4
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string   "name",       limit: 255
+    t.text     "body",       limit: 65535
+    t.integer  "upload_id",  limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   add_index "comments", ["upload_id"], name: "index_comments_on_upload_id", using: :btree
 
   create_table "uploads", force: :cascade do |t|
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.string   "document_file_name",    limit: 255
     t.string   "document_content_type", limit: 255
     t.integer  "document_file_size",    limit: 4
@@ -33,12 +33,12 @@ ActiveRecord::Schema.define(version: 20160219184201) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name",                limit: 255
-    t.string   "email",               limit: 255
-    t.string   "password_digest",     limit: 255
-    t.string   "remember_digest",     limit: 255
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.string   "name",            limit: 255
+    t.string   "email",           limit: 255
+    t.string   "password_digest", limit: 255
+    t.string   "remember_digest", limit: 255
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

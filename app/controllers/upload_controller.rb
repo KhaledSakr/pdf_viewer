@@ -31,7 +31,6 @@ class UploadController < ApplicationController
     @upload.upvote_by current_user
     redirect_to :back
   end
-  
 private
 
 # Use strong_parameters for attribute whitelisting

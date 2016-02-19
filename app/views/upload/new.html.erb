@@ -3,14 +3,14 @@
 	<p>Please select the pdf you want to view</p>
 </div>
 <div class="uploadbody">
-	<%= form_for(@upload, multipart: true, url: upload_path) do |form| %>
+<%= form_for(@upload, multipart: true, url: upload_path) do |form| %>
 	<div class="choosefile">
 		
 		  <%= form.file_field :document %>
-  	</div>
-	<div class="uploadbtn">
+	  </div>
+	  <div class="uploadbtn">
 		 <%= form.submit "Upload" %> 
-	</div>
+	  </div>
 	<% end %>
 </div>
 

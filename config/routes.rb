@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   post    'login'   => 'sessions#create'
   get     'logout'  => 'sessions#destroy'
   get     'signup'  => 'users#new'
-  get     'slides'  => 'slides#new'
+  get     'slides'  => 'slides#index'
   get     'upload'  => 'upload#new'
   post    'upload'  => 'upload#create'
 

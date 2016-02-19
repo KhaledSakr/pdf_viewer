@@ -1,9 +1,11 @@
 class SlidesController < ApplicationController
-
   def new
+	end
+		
+	
+  def index
   	@uploads = Upload.all
   end
-
   def show
     @upload = Upload.find(params[:id])
   end
@@ -19,5 +21,4 @@ class SlidesController < ApplicationController
     @upload.upvote_by current_user
     redirect_to :back
   end
-  
 end
