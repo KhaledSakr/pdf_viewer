@@ -2,6 +2,9 @@ class User < ActiveRecord::Base
 
   attr_accessor :remember_token
 
+  # FB Authorization to login with Facebook
+  has_many :authorizations
+
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   
   # Requirments for validation
@@ -34,6 +37,12 @@ class User < ActiveRecord::Base
   def authenticated?(remember_token)
     return false if remember_digest.nil?
     BCrypt::Password.new(remember_digest).is_password?(remember_token)
+  end
+
+  def User.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                  BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
   end
 
   def forget

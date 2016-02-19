@@ -3,13 +3,15 @@ Rails.application.routes.draw do
   get 'upload/show'
 
   root 'slides#index'
-  get     'login'   => 'sessions#new'
-  post    'login'   => 'sessions#create'
-  get     'logout'  => 'sessions#destroy'
-  get     'signup'  => 'users#new'
-  get     'slides'  => 'slides#index'
-  get     'upload'  => 'upload#new'
-  post    'upload'  => 'upload#create'
+  get     'login'                       => 'sessions#new'
+  post    'login'                       => 'sessions#create'
+  get     '/auth/:provider/callback'    => 'sessions#facebook'
+  get     'logout'                      => 'sessions#destroy'
+  get     '/auth/failure'               => 'sessions#failure'
+  get     'signup'                      => 'users#new'
+  get     'slides'                      => 'slides#index'
+  get     'upload'                      => 'upload#new'
+  post    'upload'                      => 'upload#create'
 
   resources :users
   
