@@ -1,9 +1,5 @@
 class UploadController < ApplicationController
 
-  def show
-    @upload = Upload.find_by_id(:id)
-  end
-
   def new
     @upload = Upload.new
   end
@@ -13,12 +9,28 @@ class UploadController < ApplicationController
     if @upload.save
       log_in @upload
       flash[:success] = "You have successfuly uploaded a file!"
-      redirect_to upload_path
+      redirect_to slides_path
     else
       render 'new'
     end
   end
 	
+  def show
+    @upload = Upload.find(params[:id])
+  end
+
+  def destroy
+    @upload = upload.find(params[:id])
+    @upload.destroy
+
+    redirect_to root_path
+  end
+
+  def upvote
+    @upload = Upload.find(params[:id])
+    @upload.upvote_by current_user
+    redirect_to :back
+  end
 private
 
 # Use strong_parameters for attribute whitelisting
