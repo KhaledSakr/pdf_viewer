@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
 
+  skip_before_filter :authenticate
+
   def show
+    redirect_to login_path unless logged_in?
     @user = User.find(params[:id])
   end
 
