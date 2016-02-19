@@ -11,7 +11,8 @@ class ApplicationController < ActionController::Base
 
 	def deny_access
 	  store_location
-	  redirect_to login_path, :notice => "Please log in to access this page."
+	  flash[:danger] = 'Please log in to access this page.'
+	  redirect_to login_path
 	end
 
 	def store_location
