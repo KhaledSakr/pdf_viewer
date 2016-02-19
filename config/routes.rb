@@ -2,18 +2,30 @@ Rails.application.routes.draw do
  
   get 'upload/show'
 
-  root 'slides#new'
+  root 'slides#index'
   get     'login'   => 'sessions#new'
   post    'login'   => 'sessions#create'
   get     'logout'  => 'sessions#destroy'
   get     'signup'  => 'users#new'
-  get     'slides'  => 'slides#new'
+  get     'slides'  => 'slides#index'
   get     'upload'  => 'upload#new'
   post    'upload'  => 'upload#create'
-  get 'upload/show'
-  post    'upload/show'  
+
   resources :users
-  resources :upload
+  
+  resources :upload do
+    resources :comments
+    member do
+      put "like",    to: "uploads#upvote"
+    end
+  end
+
+  resources :slides do
+    resources :comments
+    member do
+      put "like",    to: "slides#upvote"
+    end
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

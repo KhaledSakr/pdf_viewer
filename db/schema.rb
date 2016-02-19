@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160212232232) do
+ActiveRecord::Schema.define(version: 20160219184201) do
+
+  create_table "comments", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.text     "body",       limit: 65535
+    t.integer  "upload_id",  limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "comments", ["upload_id"], name: "index_comments_on_upload_id", using: :btree
 
   create_table "uploads", force: :cascade do |t|
     t.datetime "created_at",                        null: false
@@ -23,18 +33,30 @@ ActiveRecord::Schema.define(version: 20160212232232) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name",                limit: 255
-    t.string   "email",               limit: 255
-    t.string   "password_digest",     limit: 255
-    t.string   "remember_digest",     limit: 255
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
-    t.string   "avatar_file_name",    limit: 255
-    t.string   "avatar_content_type", limit: 255
-    t.integer  "avatar_file_size",    limit: 4
-    t.datetime "avatar_updated_at"
+    t.string   "name",            limit: 255
+    t.string   "email",           limit: 255
+    t.string   "password_digest", limit: 255
+    t.string   "remember_digest", limit: 255
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
+  create_table "votes", force: :cascade do |t|
+    t.integer  "votable_id",   limit: 4
+    t.string   "votable_type", limit: 255
+    t.integer  "voter_id",     limit: 4
+    t.string   "voter_type",   limit: 255
+    t.boolean  "vote_flag"
+    t.string   "vote_scope",   limit: 255
+    t.integer  "vote_weight",  limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "votes", ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope", using: :btree
+  add_index "votes", ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope", using: :btree
+
+  add_foreign_key "comments", "uploads"
 end
