@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       log_in @user
       flash[:success] = "You have successfuly signed up!"
       redirect_to(session[:return_to] || @user)
-      clear_return_to
+      session.delete(:return_to)
     else
       render 'new'
     end
