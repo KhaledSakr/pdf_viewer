@@ -1,9 +1,13 @@
-<div class="comment clearfix">
-	<div class="comment_content">
-		<p class="comment_name"><strong><%= comment.name %></strong></p>
-		<p class="comment_body"><%= comment.body %></p>
-		<p class="comment_time"><%= time_ago_in_words(comment.created_at) %> Ago</p>
-	</div>
 
-	
-</div>
+    <article class="comment">
+      <a class="comment-img" href="#non">
+        <%= image_tag "/assets/luda.jpg", class: "avatarThumb"  %>
+      </a>
+      <div class="comment-body">
+        <div class="text">
+          <p><%= comment.body %></p>
+        </div>
+        <p class="attribution">by <a href="#non"><%= comment.name %></a> <%= time_ago_in_words(comment.created_at) %> Ago</p>
+      </div>
+    </article>    
+  

@@ -1,17 +1,24 @@
-<header style="background: #F44336 !important; border: none; border-radius: 0px;" class="navbar navbar-inverse ">
-  <div class="container">
-    <%= link_to "PDF Viewer", root_path, id: "logo" %>
-    <nav>
-      <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Slides", slides_path %></li>
-        <li><%= link_to "Upload", upload_path %></li>
-        <% if logged_in? %>
-          <li><%= link_to current_user.name, current_user  %></li>
-          <li><%= link_to "Logout", logout_path %></li>
-        <% else %>
-          <li><%= link_to "Log in", login_path %></li>
-        <% end %>
-      </ul>
-    </nav>
+<div class="row" >
+<header>
+  <div class="col-sm-2 sideNavBar">
+      
+        <%= link_to image_tag("logo.png", :border => 0), root_path  %>
+        <div>
+          
+          <% if logged_in? %>
+             <%= image_tag "/assets/luda.jpg", class: "avatarThumb"  %>
+              <h2><%= link_to current_user.name, current_user  %></h2>
+              <h6><%= link_to " Logout", logout_path, class: "fa fa-sign-out" %></h6>
+            <% else %>
+              <li><%= link_to "Log in", login_path %></li>
+            <% end %>
+            <ul class="nav">
+            <li><%= link_to "Slides", slides_path %></li>
+            <li><%= link_to "Upload", upload_path %></li>
+          </ul>
+        </div>
+    
   </div>
 </header>
+  <div class="col-sm-10 noPadding">
+    
