@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160219221256) do
+ActiveRecord::Schema.define(version: 20160221022723) do
 
   create_table "authorizations", force: :cascade do |t|
     t.string   "provider",   limit: 255
@@ -30,6 +30,15 @@ ActiveRecord::Schema.define(version: 20160219221256) do
   end
 
   add_index "comments", ["upload_id"], name: "index_comments_on_upload_id", using: :btree
+
+  create_table "pages", force: :cascade do |t|
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.string   "url",        limit: 255
+    t.integer  "upload_id",  limit: 4
+  end
+
+  add_index "pages", ["upload_id"], name: "index_pages_on_upload_id", using: :btree
 
   create_table "uploads", force: :cascade do |t|
     t.datetime "created_at",                        null: false
@@ -67,4 +76,5 @@ ActiveRecord::Schema.define(version: 20160219221256) do
   add_index "votes", ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope", using: :btree
 
   add_foreign_key "comments", "uploads"
+  add_foreign_key "pages", "uploads"
 end

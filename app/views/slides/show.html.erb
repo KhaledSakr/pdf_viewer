@@ -1,9 +1,8 @@
 
 <%= @upload.document_file_name %><br>
 Submitted <%= time_ago_in_words(@upload.created_at) %> Ago<br>
-<%= link_to "Click Here to Separate Slides" %><br>
+<%= link_to "Click Here to Show Slides", controller: "page", action: "list", upload_id: @upload %><br>
 <%= link_to 'Delete', slide_path(@upload), method: :delete, data: { confirm: 'Are you sure?' } %><br>
-
 <div id="comments">
 		<h2><%= @upload.comments.count %> Comments</h2>
 		<%= render @upload.comments %>
