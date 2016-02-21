@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+gem 'rmagick', '~> 2.15', '>= 2.15.4'
+gem 'grim', '~> 1.2'
+
 gem 'acts_as_votable', '~> 0.10.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'

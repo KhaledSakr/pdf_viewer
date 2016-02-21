@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get     '/auth/failure'               => 'sessions#failure'
   get     'signup'                      => 'users#new'
   get     'slides'                      => 'slides#index'
+  get     'pages'                       => 'page#list'
+  get     'page'                        => 'page#show'
   get     'upload'                      => 'upload#new'
   post    'upload'                      => 'upload#create'
 
