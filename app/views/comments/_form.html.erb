@@ -1,9 +1,13 @@
 <%= form_for([@upload, @upload.comments.build]) do |f| %>
-	<%= f.label :name %><br>
-	<%= f.text_field :name %><br>
-	<br>
-	<%= f.label :body %><br>
-	<%= f.text_area :body %><br>
-	<br>
+
+	<div class="commentForm">
+	<div class="commentBody">
+	<%= f.text_area :body, placeholder: "Add Comment..." %>
+	</div>
+	<div class="commentName">
+	<div><%= f.text_field :name, placeholder: "Name.." %></div>
+	</div>
+	</div>
 	<%= f.submit %>
 <% end %>
+
