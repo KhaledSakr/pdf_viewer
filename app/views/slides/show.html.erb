@@ -1,9 +1,19 @@
-
+<div class="pdfPage">
+<%= image_tag(@upload.pages.thumbnail.url, :border => 0) %>
+<div>
 <%= @upload.document_file_name %><br>
 Submitted <%= time_ago_in_words(@upload.created_at) %> Ago<br>
 <%= link_to "Click Here to Show Slides", controller: "page", action: "list", upload_id: @upload %><br>
 <%= link_to 'Delete', slide_path(@upload), method: :delete, data: { confirm: 'Are you sure?' } %><br>
-<div id="comments">
+</div>
+</div>
+<div class="Likebtn">
+	<p><%= @upload.get_upvotes.size %> Likes
+	<%= link_to '', like_slide_path(@upload), method: :put, class:"fa fa-thumbs-o-up" %></p>
+	
+
+</div>
+<div class="commentsPage">
 		<h2><%= @upload.comments.count %> Comments</h2>
 		<%= render @upload.comments %>
 
@@ -12,5 +22,5 @@ Submitted <%= time_ago_in_words(@upload.created_at) %> Ago<br>
 	</div>
 <hr>
 
-<%= link_to 'Like', like_slide_path(@upload), method: :put %><br>
-<%= @upload.get_upvotes.size %>
+
+

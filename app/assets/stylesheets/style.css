@@ -1,21 +1,287 @@
+body {
+  background: #f4f4f4;
+  color: #424242;
+  font-family: 'RobotoDraft', 'Roboto', sans-serif;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding: 0px !important;
+}
+.noPadding{
+  padding: 0px;
+}
+h1,h2,h3,h4,h5,h6{
+  margin: 0px;
+}
 /* Navbar edits */
+.nav{
+  margin-top: 50px;
+}
 .nav li a{
-  color: white !important;
+  color: white!important;
   font-weight: 500;
   font-size: 13px;
-   -webkit-transition: all ease 0.6s;
-  transition: all ease 0.6s;
+  background: none;
+  text-align: right;
+   -webkit-transition: all ease 0.4s;
+  transition: all ease 0.4s;
 }
 
 .nav li a:hover {
-  background: #D32F2F !important;
+  color: #EA4E3D !important;
+  background: none;
+  border-left: solid #EA4E3D 5px;
+}
+.nav li a:active {
+  color: #EA4E3D !important;
+  background: none !important;
+  border-left: solid #333333 5px;
+}
+.sideNavBar{
+  background: #333333 !important; 
+  border-right: solid #1A222B 2px;
+  border-radius: 0px; 
+  min-height: 800px;
+  height: 100%;
+  text-align:center;
+  padding-top: 50px;
+}
+
+.sideNavBar img{
+  width: 100px;
+}
+.sideNavBar .avatarThumb{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin: 10px 0px;
+}
+.avatarThumb{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin: 10px 0px;
+}
+.sideNavBar h2{
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+}
+.sideNavBar h2 a{
+  color: white;
+  text-decoration: none;
+  border-bottom: solid 2px;
+  -webkit-transition: all ease 0.6s;
+  transition: all ease 0.6s;  
+}
+.sideNavBar h6 a{
+  color: white;
+  text-decoration: none;
+  -webkit-transition: all ease 0.6s;
+  transition: all ease 0.6s;
+}
+.sideNavBar h2 a:hover{
+  color: #EA4E3D;
+
+}
+.sideNavBar h6 a:hover{
+  color: #EA4E3D;
+}
+/*************/
+/***Slides****/
+.SlidesCont{
+  text-align: center;
+
+}
+.SlidePdfCont{
+
+  width: 25%;
+}
+
+.SlidePdfCont img{
+  width: 64px;
+
+}
+.SlidePdfCont h5{
+  background: #333333;
+  border-radius: 15px 15px 0px 0px;
+  color: white;
+  padding: 10px 0px;
+
+} 
+ .SlidePdfCont h5 a{
+  color: white;
+}
+.SlidesCont .SlidePdfCont .pdfIcons{
+  display: block;
+  background: #333333;
+  border-radius: 0px 0px 15px 15px ;
+}
+.SlidesCont .SlidePdfCont .trashStyle {
+  font-size: 20px;
+  text-align: right;
+  color: white;
+  padding: 5px;
+  text-decoration: none;
+  cursor: pointer;
+   -ms-transform: rotate(0deg); /* IE 9 */
+    -webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+    transform: rotate(0deg);
+  transition: all ease 0.6s;
+}
+.SlidesCont .SlidePdfCont .trashStyle:hover{
+  color: #EA4E3D;
+      -ms-transform: rotate(360deg); /* IE 9 */
+    -webkit-transform: rotate(360deg); /* Chrome, Safari, Opera */
+    transform: rotate(360deg);
+}
+.SlidesCont .SlidePdfCont .pdfThumb{
+  height: 175px;
+  background-size: 100%;
+  cursor: pointer !important;
+  background-position: center;
+    transition: all 0.5s ease-in-out;
+}
+.SlidesCont .SlidePdfCont .pdfThumb:hover{
+
+  background-size: 110%;
+  
 }
 /*************/
 
+/***Page****/
+.pdfPage{
+  text-align: center;
+  margin: 100px 0px;
+
+}
+.pdfPage img{
+  border: solid 8px;
+  margin-bottom: 20px;
+}
+.commentsPage h2{
+  text-align: right;
+margin-right: 30px;
+border-bottom: solid;
+margin-bottom: 20px;
+font-size: 20px;
+font-weight: 500;
+}
+
+.comment {
+    overflow: hidden;
+    padding: 0 0 1em;
+    border-bottom: 1px solid #ddd;
+    margin: 0 0 1em;
+    *zoom: 1;
+}
+
+.comment-img {
+    float: left;
+    margin-right: 33px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.comment-img img {
+    display: block;
+}
+
+.comment-body {
+    overflow: hidden;
+    width: 80%
+}
+
+.comment .text {
+    padding: 10px;
+    border: 1px solid #e5e5e5;
+    border-radius: 5px;
+    background: #fff;
+}
+
+.comment .text p:last-child {
+    margin: 0;
+}
+
+.comment .attribution {
+    margin: 0.5em 0 0;
+    font-size: 14px;
+    color: #666;
+}
+.comments,
+.comment {
+    position: relative;
+}
+
+.comments:before,
+.comment:before,
+.comment .text:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 65px;
+}
+
+.comments:before {
+    width: 3px;
+    top: -20px;
+    bottom: -20px;
+    background: rgba(0,0,0,0.1);
+}
+
+.comment:before {
+    width: 9px;
+    height: 9px;
+    border: 3px solid #fff;
+    border-radius: 100px;
+    margin: 16px 0 0 -6px;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.2), inset 0 1px 1px rgba(0,0,0,0.1);
+    background: #ccc;
+}
+
+.comment:hover:before {
+    background: orange;
+}
+
+.comment .text:before {
+    top: 18px;
+    left: 78px;
+    width: 9px;
+    height: 9px;
+    border-width: 0 0 1px 1px;
+    border-style: solid;
+    border-color: #e5e5e5;
+    background: #fff;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+}​
+.commentBody textarea{
+  width: 88%;
+}
+.Likebtn{
+  text-align: right;
+margin-right: 30px;
+font-size: 50px;
+
+}
+.fa-thumbs-o-up{
+  color: #333333;
+  text-decoration: none;
+
+}
+.fa-thumbs-o-up:hover {
+  color: #EA4E3D;
+  text-decoration: none;
+}
+/*************/
 /***Upload****/
 .uploadhead{
   color: #424242;
   text-align: center;
+  background: gray;
+  padding: 40px 0px 20px 0px;
 }
 .uploadbody{
   text-align: center;
@@ -35,6 +301,7 @@
   padding: 10px 20px;
   color: white;
   font-weight: 500;
+  border-radius: 20px;
   -webkit-transition: all ease 0.6s;
   transition: all ease 0.6s;
 }
@@ -42,15 +309,7 @@
   background: #D32F2F;
 }
 /*************/
-body {
-  background: #e9e9e9;
-  color: #424242;
-  font-family: 'RobotoDraft', 'Roboto', sans-serif;
-  font-size: 14px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  padding: 0px !important;
-}
+
 
 /* Pen Title */
 .pen-title {
