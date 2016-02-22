@@ -1,7 +1,7 @@
 class PageController < ApplicationController
 
 def list
-    @pages=Page.where(upload_id: params[:upload_id])
+    @pages=Page.where(upload_id: params[:id])
   end
 
 def show

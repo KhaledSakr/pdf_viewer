@@ -1,6 +1,13 @@
+<div class="pagehead">
 <h1>Pages</h1>
-
+</div>
+<ul class="bxslider">
 <% @pages.each do |p| %>
-<%= link_to image_tag(p.url, :border => 0), {:action => 'show', :controller => 'page', :id => p} %>
- <br>
+		<li><%= image_tag(p.url, :border => 0) %></li>
 <% end %>
+</ul>
+<script>
+	$(document).ready(function(){
+  $('.bxslider').bxSlider();
+});
+</script>

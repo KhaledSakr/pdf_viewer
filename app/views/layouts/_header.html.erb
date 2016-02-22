@@ -1,24 +1,22 @@
-<div class="row" >
-<header>
-  <div class="col-sm-2 sideNavBar">
+<div class="row site-container" >
+
+  <header class="col-sm-2 sideNavBar">
+    <%= link_to image_tag("logo.png", :border => 0), root_path  %>
+    <div>
       
-        <%= link_to image_tag("logo.png", :border => 0), root_path  %>
-        <div>
-          
-          <% if logged_in? %>
-             <%= image_tag "/assets/luda.jpg", class: "avatarThumb"  %>
-              <h2><%= link_to current_user.name, current_user  %></h2>
-              <h6><%= link_to " Logout", logout_path, class: "fa fa-sign-out" %></h6>
-            <% else %>
-              <li><%= link_to "Log in", login_path %></li>
-            <% end %>
-            <ul class="nav">
-            <li><%= link_to "Slides", slides_path %></li>
-            <li><%= link_to "Upload", upload_path %></li>
-          </ul>
-        </div>
-    
-  </div>
-</header>
-  <div class="col-sm-10 noPadding">
+      <% if logged_in? %>
+         <%= image_tag "/assets/luda.jpg", class: "avatarThumb"  %>
+          <h2><%= link_to current_user.name, current_user  %></h2>
+          <h6><%= link_to " Logout", logout_path, class: "fa fa-sign-out" %></h6>
+        <% else %>
+          <li><%= link_to "Log in", login_path %></li>
+        <% end %>
+        <ul class="nav">
+        <li><%= link_to "Slides", slides_path %></li>
+        <li><%= link_to "Upload", upload_path %></li>
+      </ul>
+    </div>
+  </header>
+
+  <div class=" body-content col-sm-10 noPadding">
     

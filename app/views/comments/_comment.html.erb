@@ -7,7 +7,7 @@
         <div class="text">
           <p><%= comment.body %></p>
         </div>
-        <p class="attribution">by <a href="#non"><%= comment.name %></a> <%= time_ago_in_words(comment.created_at) %> Ago</p>
+        <p class="attribution">by <a href="/users/<%= comment.user.id %>"><%= comment.user.name %></a> <%= time_ago_in_words(comment.created_at) %> Ago</p>
       </div>
     </article>    
   

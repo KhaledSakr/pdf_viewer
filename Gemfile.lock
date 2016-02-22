@@ -48,6 +48,7 @@ GEM
     bootstrap-sass (3.2.0.0)
       sass (~> 3.2)
     builder (3.2.2)
+    bxslider-rails (4.2.5.1)
     byebug (8.2.2)
     climate_control (0.0.3)
       activesupport (>= 3.0)
@@ -192,6 +193,7 @@ DEPENDENCIES
   autoprefixer-rails
   bcrypt (~> 3.1.7)
   bootstrap-sass (= 3.2.0.0)
+  bxslider-rails
   byebug
   coffee-rails (~> 4.1.0)
   grim (~> 1.2)

@@ -6,8 +6,10 @@ class SlidesController < ApplicationController
   	@uploads = Upload.all
   end
   def show
-
     @upload = Upload.find(params[:id])
+    @name = @upload.document_file_name
+    @name = @name.partition('.').first 
+    @name.sub! '_', ' '
   end
 
   def destroy

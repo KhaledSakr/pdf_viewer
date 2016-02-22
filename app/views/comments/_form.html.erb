@@ -1,13 +1,9 @@
 <%= form_for([@upload, @upload.comments.build]) do |f| %>
 
 	<div class="commentForm">
-	<div class="commentBody">
-	<%= f.text_area :body, placeholder: "Add Comment..." %>
-	</div>
-	<div class="commentName">
-	<div><%= f.text_field :name, placeholder: "Name.." %></div>
+	<div class="commentBody form-group">
+	<%= f.text_area :body, placeholder: "Add Comment...",class: "form-control" %>
 	</div>
 	</div>
-	<%= f.submit %>
+	<%= f.submit "Add Comment",:class => "btn btn-primary" %>
 <% end %>
-

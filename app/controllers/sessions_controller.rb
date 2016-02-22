@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
     if user
       log_in user
       remember(user)
-      redirect_to user
+      redirect_to slides
     else
       flash.now[:danger] = 'Failed to Authenticate.'
       render 'new'
