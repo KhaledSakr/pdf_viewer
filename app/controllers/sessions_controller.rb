@@ -7,13 +7,13 @@ class SessionsController < ApplicationController
 
   def facebook
     if current_user
-      facebook_link
+      link_facebook
     else
-      facebook_new
+      new_facebook
     end
   end
 
-  def facebook_new
+  def new_facebook
     auth_hash = request.env['omniauth.auth']
     user = User.new
     if authorization = Authorization.find_by_provider_and_uid(auth_hash["provider"], auth_hash["uid"])
@@ -34,19 +34,25 @@ class SessionsController < ApplicationController
       redirect_to(session[:return_to] || user)
       session.delete(:return_to)
     else
-      flash.now[:danger] = 'Failed to Authenticate.'
-      render 'new'
+      flash[:danger] = 'Failed to Authenticate.'
+      redirect_to login_path
     end
   end
 
-  def facebook_link
-    auth_hash = request.env['omniauth.auth']
-    user = current_user
-    user.authorizations.build :provider => auth_hash["provider"], :uid => auth_hash["uid"]
-    flash[:success] = 'You have successfuly linked your account with Facebook!'
-    log_in user
-    remember(user)
-    session.delete(:return_to)
+  def link_facebook
+    if authorization = Authorization.find_by_provider_and_uid(auth_hash["provider"], auth_hash["uid"])
+      flash[:danger] = 'Another account is already linked to this facebook account.'
+      redirect_to login_path
+    else
+      auth_hash = request.env['omniauth.auth']
+      user = current_user
+      user.authorizations.build :provider => auth_hash["provider"], :uid => auth_hash["uid"]
+      flash[:success] = 'You have successfuly linked your account with Facebook!'
+      log_in user
+      redirect_to user
+      remember(user)
+      session.delete(:return_to)
+    end
   end
 
   def create
