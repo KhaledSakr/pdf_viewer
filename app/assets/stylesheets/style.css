@@ -801,3 +801,34 @@ border: none !important;
 ::-webkit-scrollbar-thumb:hover {  
     background-color: rgba( 235, 77, 62,0.7); 
 }
+
+/*** Sign Up ***/
+.signup {
+  padding-left: 10px;
+}
+
+/*** profile ***/
+.profile h2 {
+    margin: 40px 0px;
+}
+.profile {
+    padding: 50px;
+    margin: 20px 0px;
+    border: 1px solid #e5e5e5;
+    border-radius: 5px;
+    background: #fff;
+    text-align: center;
+}
+.profile form {
+  display: inline-block;
+  margin: 5px;
+}
+
+/*** edit information ***/
+.edit-user-form {
+  padding-left: 10px;
+  padding-top: 20px;
+}
+.edit-user-form .form-control {
+  width: 50%;
+}

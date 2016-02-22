@@ -33,9 +33,9 @@ ActiveRecord::Schema.define(version: 20160222105712) do
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "pages", force: :cascade do |t|
-    t.string   "url",        limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.string   "url",        limit: 255
     t.integer  "upload_id",  limit: 4
   end
 

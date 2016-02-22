@@ -5,7 +5,6 @@ class UsersController < ApplicationController
   def show
     redirect_to login_path unless logged_in?
     @user = User.find(params[:id])
-    @user_uploads = Upload.find_by_user_id(params[:id])
   end
 
   def new

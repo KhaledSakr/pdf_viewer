@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 
   # FB Authorization to login with Facebook
   has_many :authorizations
-
+  has_many :uploads
   has_many :comments
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
