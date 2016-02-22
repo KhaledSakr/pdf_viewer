@@ -1,1 +1,2 @@
 == PDF VIEWER
+A rails project use to upload and convert pdfs to images, and it has a complete interface as users can signup, login, add comments, like slides.
