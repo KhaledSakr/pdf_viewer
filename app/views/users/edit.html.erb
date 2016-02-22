@@ -1,0 +1,25 @@
+<%= form_for(current_user, :url => { :action => "update" } ) do |f| %>
+<% if current_user.password_digest %>
+  <div>
+  <%= f.label :current_password %> <i>(We need your current password to confirm your changes)</i>
+  <%= f.password_field :current_password %>
+  </div>
+<% end %>
+  <div>
+  <%= f.label :name, "Name" %>
+  <%= f.text_field :name, :value => current_user.name %>
+  </div>
+<% if current_user.password_digest %>
+  <div>
+    <%= f.label :password, "Password" %>
+    <%= f.password_field :password, :autocomplete => "off" %>
+  </div>
+  <div>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <div>
+<% end %>
+    <%= f.submit %>
+  </div>
+<% end %>

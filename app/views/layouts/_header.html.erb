@@ -5,7 +5,7 @@
     <div>
       
       <% if logged_in? %>
-         <%= image_tag "/assets/luda.jpg", class: "avatarThumb"  %>
+         <%= image_tag current_user.avatar, class: "avatarThumb"  %>
           <h2><%= link_to current_user.name, current_user  %></h2>
           <h6><%= link_to " Logout", logout_path, class: "fa fa-sign-out" %></h6>
         <% else %>

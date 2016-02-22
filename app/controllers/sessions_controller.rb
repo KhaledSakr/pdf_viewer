@@ -6,6 +6,14 @@ class SessionsController < ApplicationController
   end
 
   def facebook
+    if current_user
+      facebook_link
+    else
+      facebook_new
+    end
+  end
+
+  def facebook_new
     auth_hash = request.env['omniauth.auth']
     user = User.new
     if authorization = Authorization.find_by_provider_and_uid(auth_hash["provider"], auth_hash["uid"])
@@ -23,11 +31,22 @@ class SessionsController < ApplicationController
     if user
       log_in user
       remember(user)
-      redirect_to slides
+      redirect_to(session[:return_to] || user)
+      session.delete(:return_to)
     else
       flash.now[:danger] = 'Failed to Authenticate.'
       render 'new'
     end
+  end
+
+  def facebook_link
+    auth_hash = request.env['omniauth.auth']
+    user = current_user
+    user.authorizations.build :provider => auth_hash["provider"], :uid => auth_hash["uid"]
+    flash[:success] = 'You have successfuly linked your account with Facebook!'
+    log_in user
+    remember(user)
+    session.delete(:return_to)
   end
 
   def create
@@ -35,7 +54,8 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       log_in user
       params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-      redirect_to user
+      redirect_to(session[:return_to] || user)
+      session.delete(:return_to)
     else
       flash.now[:danger] = 'Invalid email/password combination'
   		render 'new'

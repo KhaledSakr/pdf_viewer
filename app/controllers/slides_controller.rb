@@ -5,6 +5,7 @@ class SlidesController < ApplicationController
   def index
   	@uploads = Upload.all
   end
+  
   def show
     @upload = Upload.find(params[:id])
     @name = @upload.document_file_name

@@ -1,4 +1,23 @@
-<%= @user.name %>, <%= @user.email %>
-<% unless @user.authorizations.exists? %>
-  <li><%= link_to "Link with Facebook", "/auth/facebook"  %></li>
+<% unless @user.id == current_user.id %>
+   <%= image_tag current_user.large_image, class: "avatarThumbBig"  %>
 <% end %>
+<%= @user.name %>, <%= @user.email %>
+<% if @user.id == current_user.id %>
+	<% unless @user.authorizations.exists? %>
+	  <div><%= link_to "Link with Facebook", "/auth/facebook"  %></div>
+	<% end %>
+  <div><%= link_to "Edit your information", "edit" %></div>
+<% end %>
+
+<div class="SlidesCont">
+<% @user_uploads.each do |up| %>
+<div class="col-sm-3 SlidePdfCont">
+<h5><%=up.document_file_name %></h5>
+<a href="<%= slide_path(up) %>"><div class="pdfThumb"></div></a>
+<div class="pdfIcons">
+	<%= link_to '  ', slide_path(up),  class:"fa fa-eye trashStyle"%>
+	<%= link_to '  ', slide_path(up), method: :delete, class:"fa fa-trash-o trashStyle", data: { confirm: 'Are you sure you want to delete the file?' } %>
+ </div>
+ </div>
+<% end %>
+</div>

@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 
   # FB Authorization to login with Facebook
   has_many :authorizations
+
   has_many :comments
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -48,6 +49,27 @@ class User < ActiveRecord::Base
 
   def forget
     update_attribute(:remember_digest, nil)
+  end
+
+  def square_image
+    "http://graph.facebook.com/#{self.authorizations.first.uid}/picture?type=square"
+  end
+
+  def normal_image
+    "http://graph.facebook.com/#{self.authorizations.first.uid}/picture?type=normal"
+  end
+
+  def large_image
+    "http://graph.facebook.com/#{self.authorizations.first.uid}/picture?type=large"
+  end
+
+  def avatar
+    if self.authorizations.first
+      return normal_image
+    else
+      robo_hash = Digest::MD5.hexdigest(self.email.downcase)
+      return "https://robohash.org/#{robo_hash}.png"
+    end
   end
   
 end

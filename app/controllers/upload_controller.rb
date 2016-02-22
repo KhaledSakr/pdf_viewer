@@ -6,6 +6,7 @@ class UploadController < ApplicationController
 
   def create
     @upload = Upload.new(upload_params)
+    @upload.user_id = current_user.id
     if @upload.save
 
       #Start from here ! 

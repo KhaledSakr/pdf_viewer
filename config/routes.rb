@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get     'logout'                      => 'sessions#destroy'
   get     '/auth/failure'               => 'sessions#failure'
   get     'signup'                      => 'users#new'
+  get     'users/edit'                  => 'users#edit'
+  post    'users/edit'                  => 'users#update'
   get     'slides'                      => 'slides#index'
   get     'upload'                      => 'upload#new'
   post    'upload'                      => 'upload#create'
